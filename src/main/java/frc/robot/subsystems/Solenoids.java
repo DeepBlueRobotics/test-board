@@ -29,7 +29,7 @@ public class Solenoids extends Subsystem {
       return false;
     } else {
       if (isOpen(n))
-        solenoids.get(n).set(DoubleSolenoid.Value.kForward);
+        solenoids.get(n).set(DoubleSolenoid.Value.kReverse);
       
       return true;
     }
@@ -40,13 +40,13 @@ public class Solenoids extends Subsystem {
       return false;
     } else {
       if (!isOpen(n))
-        solenoids.get(n).set(DoubleSolenoid.Value.kReverse);
+        solenoids.get(n).set(DoubleSolenoid.Value.kForward);
       
       return true;
     }
   }
 
   public boolean isOpen(int n) {
-    return solenoids.get(n).get() == DoubleSolenoid.Value.kReverse;
+    return solenoids.get(n).get() == DoubleSolenoid.Value.kForward;
   }
 }
