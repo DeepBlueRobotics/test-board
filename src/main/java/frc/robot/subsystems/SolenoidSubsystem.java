@@ -24,7 +24,15 @@ public class SolenoidSubsystem extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public boolean closeSolenoid(int n) {
+  public void toggle(int solNum) {
+    if (isOpen(solNum)) {
+      close(solNum);
+    } else {
+      open(solNum);
+    }
+  }
+
+  public boolean close(int n) {
     if (n < 0 || n >= solenoids.size()) {
       return false;
     } else {
@@ -35,7 +43,7 @@ public class SolenoidSubsystem extends Subsystem {
     }
   }
 
-  public boolean openSolenoid(int n) {
+  public boolean open(int n) {
     if (n < 0 || n >= solenoids.size()) {
       return false;
     } else {

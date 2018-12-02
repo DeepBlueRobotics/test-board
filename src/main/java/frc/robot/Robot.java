@@ -11,7 +11,8 @@ import frc.robot.subsystems.SolenoidSubsystem;
  * project.
  */
 public class Robot extends IterativeRobot {
-  public static SolenoidSubsystem solSub;
+  private static SolenoidSubsystem solSub;
+  private static OI oi;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -20,6 +21,8 @@ public class Robot extends IterativeRobot {
   @Override
   public void robotInit() {
     solSub = new SolenoidSubsystem(RobotMap.solenoids);
+
+    oi = new OI(solSub);
   }
 
   /**
