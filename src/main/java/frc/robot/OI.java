@@ -2,18 +2,19 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.ActuateSolenoid;
+import frc.robot.commands.ToggleSolenoid;
+import frc.robot.subsystems.SolenoidSubsystem;
 
 class OI {
-    static Joystick leftJoy;
+    Joystick leftJoy;
     
-    static Joystick rightJoy;
+    Joystick rightJoy;
     
-    static Joystick manipulator;
-    private static JoystickButton actuateSolenoid0;
-    private static JoystickButton actuateSolenoid1;
+    Joystick manipulator;
+    private JoystickButton actuateSolenoid0;
+    private JoystickButton actuateSolenoid1;
 
-    static {
+    OI(SolenoidSubsystem solSub) {
         /* LEFT JOYSTICK */
         leftJoy = new Joystick(0);
 
@@ -24,8 +25,8 @@ class OI {
         manipulator = new Joystick(2);
         
         actuateSolenoid0 = new JoystickButton(manipulator, 1);
-        actuateSolenoid0.whenPressed(new ActuateSolenoid(Robot.solSub, 0));
+        actuateSolenoid0.whenPressed(new ToggleSolenoid(solSub, 0));
         actuateSolenoid1 = new JoystickButton(manipulator, 2);
-        actuateSolenoid1.whenPressed(new ActuateSolenoid(Robot.solSub, 1));
+        actuateSolenoid1.whenPressed(new ToggleSolenoid(solSub, 1));
     }
 }
