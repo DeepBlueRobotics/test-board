@@ -8,13 +8,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Add your docs here.
  */
-public class Solenoids extends Subsystem {
+public class SolenoidSubsystem extends Subsystem {
   private ArrayList<DoubleSolenoid> solenoids;
 
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public Solenoids (ArrayList<DoubleSolenoid> solenoids) {
+  public SolenoidSubsystem (ArrayList<DoubleSolenoid> solenoids) {
     this.solenoids = solenoids;
   }
 

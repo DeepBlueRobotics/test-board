@@ -1,12 +1,7 @@
 package frc.robot;
 
-import java.util.ArrayList;
-
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.Solenoids;
+import frc.robot.subsystems.SolenoidSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -16,24 +11,7 @@ import frc.robot.subsystems.Solenoids;
  * project.
  */
 public class Robot extends IterativeRobot {
-  private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
-  private final SendableChooser<String> m_chooser = new SendableChooser<>();
-
-  public static Solenoids solenoids;
-
-  private static RobotMap rmap;
-
-  private class RobotMap {
-    public DoubleSolenoid solenoid1;
-    public DoubleSolenoid solenoid2;
-
-    public RobotMap() {
-      solenoid1 = new DoubleSolenoid(0, 3);
-      solenoid2 = new DoubleSolenoid(1, 2);
-    }
-  }
+  public static SolenoidSubsystem solSub;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -41,16 +19,7 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void robotInit() {
-    m_chooser.addDefault("Default Auto", kDefaultAuto);
-    m_chooser.addObject("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
-
-    rmap = new RobotMap();
-
-    ArrayList<DoubleSolenoid> solenoidList = new ArrayList<DoubleSolenoid>();
-    solenoidList.add(rmap.solenoid1);
-    solenoidList.add(rmap.solenoid2);
-    solenoids = new Solenoids(solenoidList);
+    solSub = new SolenoidSubsystem(RobotMap.solenoids);
   }
 
   /**
@@ -78,10 +47,6 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autoSelected = m_chooser.getSelected();
-    // autoSelected = SmartDashboard.getString("Auto Selector",
-    // defaultAuto);
-    System.out.println("Auto selected: " + m_autoSelected);
   }
 
   /**
@@ -89,15 +54,6 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
-        break;
-      case kDefaultAuto:
-      default:
-        // Put default auto code here
-        break;
-    }
   }
 
   /**
