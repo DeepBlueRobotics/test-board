@@ -29,9 +29,19 @@ deploy {
 // Defining my dependencies. In this case, WPILib (+ friends), CTRE Toolsuite (Talon SRX)
 // and NavX.
 dependencies {
-    compile wpilib()
-    compile ctre()
-    compile navx()
+    // GradleRIO uses "compile" instead of "implementation" but that's deprecated and this works
+    implementation wpilib()
+    implementation ctre()
+    implementation navx()
+
+    // Additionally added libraries by Kevin for testing
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter-api:5.1.0',
+            'org.mockito:mockito-core:1.+'
+    )
+    testRuntimeOnly(
+            'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+    )
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')
@@ -51,4 +61,12 @@ compileJava {
 
 wrapper {
     gradleVersion = '4.9'
+}
+
+// "repositories" and "test" are required for testing
+repositories {
+    mavenCentral()
+}
+test {
+    useJUnitPlatform()
 }
