@@ -19,6 +19,7 @@ class RobotMap {
     solenoids = new ArrayList<DoubleSolenoid>();
     solenoids.add(new DoubleSolenoid(0, 3));
     solenoids.add(new DoubleSolenoid(1, 2));
+    System.out.println("solenoids created");
 
     talon = new WPI_TalonSRX(0);
     victorSPX = new WPI_VictorSPX(1);

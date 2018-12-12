@@ -14,7 +14,8 @@ public class ToggleSolenoid extends InstantCommand {
    * Add your docs here.
    */
   public ToggleSolenoid(SolenoidSubsystem solSub, int solNum) {
-    super();
+    super("ToggleSolenoid" + solNum);
+    this.setSubsystem("SolenoidSubsystem");
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
 
@@ -22,11 +23,13 @@ public class ToggleSolenoid extends InstantCommand {
     this.solSub = solSub;
 
     requires(solSub);
+    System.out.println("Created ToggleSolenoid for solenoid " + solNum);
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
+    System.out.println("Calling toggle for " + solNum);
     solSub.toggle(solNum);
   }
 

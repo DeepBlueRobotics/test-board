@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.subsystems.SolenoidSubsystem;
 
 /**
@@ -21,8 +22,9 @@ public class Robot extends IterativeRobot {
   @Override
   public void robotInit() {
     solSub = new SolenoidSubsystem(RobotMap.solenoids);
-
+    System.out.println("SolenoidSubsystem created");
     oi = new OI(solSub);
+    System.out.println("OI created");
   }
 
   /**
@@ -37,6 +39,12 @@ public class Robot extends IterativeRobot {
   public void robotPeriodic() {
   }
 
+  /**
+   * Runs when test mode is enable
+   */
+  @Override
+  public void testInit() {
+  }
   /**
    * This autonomous (along with the chooser code above) shows how to select
    * between different autonomous modes using the dashboard. The sendable
@@ -57,6 +65,7 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    Scheduler.getInstance().run();
   }
 
   /**
@@ -64,6 +73,7 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void teleopPeriodic() {
+    Scheduler.getInstance().run();
   }
 
   /**

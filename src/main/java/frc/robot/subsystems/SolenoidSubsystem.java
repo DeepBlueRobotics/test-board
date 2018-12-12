@@ -15,7 +15,12 @@ public class SolenoidSubsystem extends Subsystem {
   // here. Call these from Commands.
 
   public SolenoidSubsystem (ArrayList<DoubleSolenoid> solenoids) {
+    super("SolenoidSubsystem");
     this.solenoids = solenoids;
+    for(int s = 0; s < solenoids.size(); s++) {
+      DoubleSolenoid sol = solenoids.get(s);
+      sol.setName("SolenoidSubsystem", "Solenoid" + s);
+    }
   }
 
   @Override
