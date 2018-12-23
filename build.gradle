@@ -29,10 +29,9 @@ deploy {
 // Defining my dependencies. In this case, WPILib (+ friends), CTRE Toolsuite (Talon SRX)
 // and NavX.
 dependencies {
-    // GradleRIO uses "compile" instead of "implementation" but that's deprecated and this works
-    implementation wpilib()
-    implementation ctre()
-    implementation navx()
+    compile wpilib()
+    compile ctre()
+    compile navx()
 
     // Additionally added libraries by Kevin for testing
     testImplementation(
