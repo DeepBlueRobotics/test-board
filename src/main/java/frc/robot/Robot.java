@@ -1,6 +1,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import frc.robot.subsystems.SolenoidSubsystem;
 
 /**
@@ -57,6 +59,7 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    Scheduler.getInstance().run();
   }
 
   /**
@@ -64,6 +67,7 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void teleopPeriodic() {
+    Scheduler.getInstance().run();
   }
 
   /**
@@ -71,5 +75,6 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void testPeriodic() {
+    LiveWindow.run();
   }
 }
