@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import frc.robot.subsystems.MotorSubsystem;
 import frc.robot.subsystems.SolenoidSubsystem;
 
 /**
@@ -14,6 +15,7 @@ import frc.robot.subsystems.SolenoidSubsystem;
  */
 public class Robot extends IterativeRobot {
   private static SolenoidSubsystem solSub;
+  private static MotorSubsystem motorSub;
   private static OI oi;
 
   /**
@@ -23,8 +25,9 @@ public class Robot extends IterativeRobot {
   @Override
   public void robotInit() {
     solSub = new SolenoidSubsystem(RobotMap.solenoids);
+    motorSub = new MotorSubsystem(RobotMap.victorSP, RobotMap.talon, RobotMap.victorSPX);
 
-    oi = new OI(solSub);
+    oi = new OI(solSub, motorSub);
   }
 
   /**

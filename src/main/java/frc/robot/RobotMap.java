@@ -20,8 +20,8 @@ class RobotMap {
     solenoids.add(new DoubleSolenoid(0, 3));
     solenoids.add(new DoubleSolenoid(1, 2));
 
-    talon = new WPI_TalonSRX(0);
-    victorSPX = new WPI_VictorSPX(1);
-    victorSP = new VictorSP(2);
+    talon = new WPI_TalonSRX(1);
+    victorSPX = new WPI_VictorSPX(3);
+    victorSP = new VictorSP(9);
   }
 }
