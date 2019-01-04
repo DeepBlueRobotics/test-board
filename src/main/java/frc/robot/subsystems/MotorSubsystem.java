@@ -1,7 +1,5 @@
 package frc.robot.subsystems;
 
-import java.util.ArrayList;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import edu.wpi.first.wpilibj.VictorSP;
@@ -25,7 +23,7 @@ public class MotorSubsystem extends Subsystem {
         
     }
 
-    public void turn(double amount) {
+    public void setThrottle(double amount) {
         victorSP.set(amount);
         talonSRX.set(amount);
         victorSPX.set(amount);

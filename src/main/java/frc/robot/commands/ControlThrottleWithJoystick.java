@@ -4,11 +4,11 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.MotorSubsystem;
 
-public class TurnMotor extends Command {
+public class ControlThrottleWithJoystick extends Command {
     MotorSubsystem motorSub;
     Joystick stick;
     
-    public TurnMotor(MotorSubsystem motorSub, Joystick stick) {
+    public ControlThrottleWithJoystick(MotorSubsystem motorSub, Joystick stick) {
         this.motorSub = motorSub;
         this.stick = stick;
 
@@ -17,7 +17,7 @@ public class TurnMotor extends Command {
 
     @Override
     protected void execute() {
-        motorSub.turn(stick.getY());
+        motorSub.setThrottle(stick.getY());
     }
 
     @Override
