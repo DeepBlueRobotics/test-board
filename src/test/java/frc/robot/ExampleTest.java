@@ -1,11 +1,11 @@
 package frc.robot;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
 import static org.mockito.Mockito.*;
 
 import java.util.List;
-
-import org.junit.jupiter.api.Test;
 
 /**
  * MyTest
