@@ -2,6 +2,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ToggleSolenoid;
 import frc.robot.commands.ControlThrottleWithJoystick;
 import frc.robot.subsystems.MotorSubsystem;
@@ -27,10 +30,11 @@ class OI {
         manipulator = new Joystick(2);
         
         actuateSolenoid0 = new JoystickButton(manipulator, 1);
-        actuateSolenoid0.whenPressed(new ToggleSolenoid(solSub, 0));
+        Command toggleSolenoid0 = new ToggleSolenoid(solSub, 0);
+        actuateSolenoid0.whenPressed(toggleSolenoid0);
         actuateSolenoid1 = new JoystickButton(manipulator, 2);
         actuateSolenoid1.whenPressed(new ToggleSolenoid(solSub, 1));
         motorSub.setDefaultCommand(new ControlThrottleWithJoystick(motorSub, leftJoy));
-        
+        SmartDashboard.putData(toggleSolenoid0);
     }
 }
