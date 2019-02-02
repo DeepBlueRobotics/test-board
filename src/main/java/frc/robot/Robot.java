@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -28,6 +29,9 @@ public class Robot extends IterativeRobot {
     motorSub = new MotorSubsystem(RobotMap.victorSP, RobotMap.talon, RobotMap.victorSPX);
 
     oi = new OI(solSub, motorSub);
+    CameraServer.getInstance().startAutomaticCapture(0).setFPS(24);
+    CameraServer.getInstance().startAutomaticCapture(1).setFPS(24);
+    
   }
 
   /**
