@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot {
   @Override
   public void robotInit() {
     solSub = new SolenoidSubsystem(RobotMap.solenoids);
-    motorSub = new MotorSubsystem(RobotMap.victorSP, RobotMap.talon, RobotMap.victorSPX);
+    motorSub = new MotorSubsystem(RobotMap.victorSP, RobotMap.talon, RobotMap.victorSPX, RobotMap.sparkMax);
 
     oi = new OI(solSub, motorSub);
     CameraServer.getInstance().startAutomaticCapture(0).setFPS(24);
