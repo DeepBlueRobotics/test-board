@@ -15,7 +15,7 @@ public class SetNeoPosition extends InstantCommand {
 
     @Override
     protected void initialize() {
-        sub.changeNeoGoal();
+        sub.setNeoGoal();
         sub.setNeoPosition();
     }
 }

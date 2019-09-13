@@ -25,6 +25,10 @@ public class MotorSubsystem extends Subsystem {
         goal = 0;
         SmartDashboard.putNumber("Neo Position", 0);
         SmartDashboard.putNumber("Neo Goal", 0);
+        sparkMax.getPIDController().setP(SmartDashboard.getNumber("P", 0));
+        sparkMax.getPIDController().setI(SmartDashboard.getNumber("I", 0));
+        sparkMax.getPIDController().setD(SmartDashboard.getNumber("D", 0));
+        sparkMax.getPIDController().setFF(SmartDashboard.getNumber("FF", 0));
     }
 
     @Override
@@ -33,6 +37,9 @@ public class MotorSubsystem extends Subsystem {
     }
 
     public void setThrottle(double amount) {
+        if (amount < 0.1 && amount > -0.1) {
+            amount = 0;
+        }
         victorSP.set(amount);
         talonSRX.set(amount);
         victorSPX.set(amount);
@@ -44,8 +51,7 @@ public class MotorSubsystem extends Subsystem {
         SmartDashboard.putNumber("Neo Position", sparkMax.getEncoder().getPosition());
     }
 
-    public void changeNeoGoal() {
-        goal += 0.5;
-        SmartDashboard.putNumber("Neo Goal", goal);
+    public void setNeoGoal() {
+        goal = SmartDashboard.getNumber("Neo Goal", goal);
     }
 }

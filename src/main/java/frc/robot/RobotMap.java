@@ -26,6 +26,6 @@ class RobotMap {
     talon = new WPI_TalonSRX(1);
     victorSPX = new WPI_VictorSPX(3);
     victorSP = new VictorSP(9);
-    sparkMax = new CANSparkMax(0, MotorType.kBrushless);
+    sparkMax = new CANSparkMax(2, MotorType.kBrushless);
   }
 }
