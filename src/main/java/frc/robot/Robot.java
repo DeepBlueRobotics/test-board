@@ -1,8 +1,7 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import frc.robot.subsystems.MotorSubsystem;
 import frc.robot.subsystems.SolenoidSubsystem;
 
@@ -13,7 +12,7 @@ import frc.robot.subsystems.SolenoidSubsystem;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
-public class Robot extends IterativeRobot {
+public class Robot extends TimedRobot {
   private static SolenoidSubsystem solSub;
   private static MotorSubsystem motorSub;
   private static OI oi;
@@ -78,6 +77,5 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void testPeriodic() {
-    LiveWindow.run();
   }
 }
